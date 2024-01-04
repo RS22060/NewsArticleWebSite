@@ -14,14 +14,12 @@ namespace NewsArticleWebSite.Controllers
     {
         private NewsEntities db = new NewsEntities();
 
-        // GET: Paragraphs
         public ActionResult Index()
         {
             var paragraph = db.Paragraph.Include(p => p.Article);
             return View(paragraph.ToList());
         }
 
-        // GET: Paragraphs/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,16 +34,12 @@ namespace NewsArticleWebSite.Controllers
             return View(paragraph);
         }
 
-        // GET: Paragraphs/Create
         public ActionResult Create()
         {
             ViewBag.ArticleId = new SelectList(db.Article, "ArticleId", "Title");
             return View();
         }
 
-        // POST: Paragraphs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ParagraphId,Text,ArticleId")] Paragraph paragraph)
@@ -61,7 +55,6 @@ namespace NewsArticleWebSite.Controllers
             return View(paragraph);
         }
 
-        // GET: Paragraphs/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,9 +70,6 @@ namespace NewsArticleWebSite.Controllers
             return View(paragraph);
         }
 
-        // POST: Paragraphs/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ParagraphId,Text,ArticleId")] Paragraph paragraph)
@@ -94,7 +84,6 @@ namespace NewsArticleWebSite.Controllers
             return View(paragraph);
         }
 
-        // GET: Paragraphs/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -109,7 +98,6 @@ namespace NewsArticleWebSite.Controllers
             return View(paragraph);
         }
 
-        // POST: Paragraphs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

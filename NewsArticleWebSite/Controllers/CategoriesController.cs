@@ -14,13 +14,11 @@ namespace NewsArticleWebSite.Controllers
     {
         private NewsEntities db = new NewsEntities();
 
-        // GET: Categories
         public ActionResult Index()
         {
             return View(db.Category.ToList());
         }
 
-        // GET: Categories/Details/5
         public ActionResult Details(short? id)
         {
             if (id == null)
@@ -35,15 +33,11 @@ namespace NewsArticleWebSite.Controllers
             return View(category);
         }
 
-        // GET: Categories/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Categories/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CategoryId,Title,Description")] Category category)
@@ -58,7 +52,6 @@ namespace NewsArticleWebSite.Controllers
             return View(category);
         }
 
-        // GET: Categories/Edit/5
         public ActionResult Edit(short? id)
         {
             if (id == null)
@@ -73,9 +66,6 @@ namespace NewsArticleWebSite.Controllers
             return View(category);
         }
 
-        // POST: Categories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CategoryId,Title,Description")] Category category)
@@ -89,7 +79,6 @@ namespace NewsArticleWebSite.Controllers
             return View(category);
         }
 
-        // GET: Categories/Delete/5
         public ActionResult Delete(short? id)
         {
             if (id == null)
@@ -104,7 +93,6 @@ namespace NewsArticleWebSite.Controllers
             return View(category);
         }
 
-        // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(short id)
